@@ -49,7 +49,7 @@ const MessagesSwiper = () => {
       <div className="flex gap-4 flex-col">
          <div className="sticky top-16 md:top-20 z-10 grid grid-cols-4 gap-2 md:gap-3 p-2 md:p-3 rounded-lg backdrop-blur-lg bg-gray-50/75 dark:bg-gray-900/75 shadow-md border dark:border-gray-800">
             <div
-               className={`p-2 md:p-4 rounded-md cursor-pointer text-center text-xs transition duration-500 shadow dark:text-white md:font-bold ${
+               className={`p-2 md:p-4 rounded-md cursor-pointer text-center text-xs md:text-xl transition duration-500 shadow dark:text-white md:font-bold ${
                   translate == "0"
                      ? "shadow-inner bg-gray-200 dark:bg-gray-700"
                      : "dark:bg-gray-800 bg-gray-100"
@@ -59,7 +59,7 @@ const MessagesSwiper = () => {
                Messages
             </div>
             <div
-               className={`p-2 md:p-4 rounded-md cursor-pointer text-center text-xs transition duration-500 shadow dark:text-white md:font-bold ${
+               className={`p-2 md:p-4 rounded-md cursor-pointer text-center text-xs md:text-xl transition duration-500 shadow dark:text-white md:font-bold ${
                   translate == "25"
                      ? "shadow-inner bg-gray-200 dark:bg-gray-700"
                      : "dark:bg-gray-800 bg-gray-100"
@@ -69,7 +69,7 @@ const MessagesSwiper = () => {
                New
             </div>
             <div
-               className={`p-2 md:p-4 rounded-md cursor-pointer text-center text-xs transition duration-500 shadow dark:text-white md:font-bold ${
+               className={`p-2 md:p-4 rounded-md cursor-pointer text-center text-xs md:text-xl transition duration-500 shadow dark:text-white md:font-bold ${
                   translate == "50"
                      ? "shadow-inner bg-gray-200 dark:bg-gray-700"
                      : "dark:bg-gray-800 bg-gray-100"
@@ -79,7 +79,7 @@ const MessagesSwiper = () => {
                Favorit
             </div>
             <div
-               className={`p-2 md:p-4 rounded-md cursor-pointer text-center text-xs transition duration-500 shadow dark:text-white md:font-bold ${
+               className={`p-2 md:p-4 rounded-md cursor-pointer text-center text-xs md:text-xl transition duration-500 shadow dark:text-white md:font-bold ${
                   translate == "75"
                      ? "shadow-inner bg-gray-200 dark:bg-gray-700"
                      : "dark:bg-gray-800 bg-gray-100"
