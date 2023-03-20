@@ -11,26 +11,26 @@ const Navbar = () => {
    const openMenu = useSelector(state => state.openMenu.value)
    const dispatch = useDispatch();
    return (
-      <nav id="navbar" className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 dark:bg-gray-900 shadow-sm z-30 fixed w-full">
+      <nav id="navbar" className="bg-white/75 px-2 sm:px-4 border-b border-gray-100 dark:border-gray-800 py-2.5 dark:bg-gray-900/75 backdrop-blur-lg shadow-sm z-30 sticky top-0 w-full">
          <div className="container flex flex-wrap items-center justify-between mx-auto">
             <a href='/' className="flex items-center">
-               <div className="mr-3 h-7 sm:h-10 aspect-square">
+               {/* <div className="mr-3 h-7 sm:h-10 aspect-square">
                   <Image src={Logo} alt="Stalker Rat" className="w-full" />
-               </div>
+               </div> */}
                <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
-                  Flowbite
+                  <span className="text-primary">S</span>taker <span className="text-primary">R</span>at
                </span>
             </a>
             <div className="flex md:order-2">
                <div className="relative hidden md:block">
-                  <div className="font-bold flex justify-center items-center gap-2 py-4 md:py-0 text-gray-900 dark:text-gray-100">
+                  <div className="flex justify-center items-center gap-2 py-4 md:py-0 text-gray-900 dark:text-gray-100">
                      <Link href={"/signup"}>
-                        <a className="bg-primary px-3 py-2 text-white rounded-lg dark:text-gray-800">
-                           Sign up
+                        <a className="bg-primary px-3 py-2 text-white rounded-lg dark:text-gray-800 hover:bg-primary/75 transition">
+                           Sign Up
                         </a>
                      </Link>
                      <Link href={"/login"}>
-                        <a className="px-3 py-2 rounded-lg text-primary border border-primary">
+                        <a className="px-3 py-2 font-light hover:bg-primary/25 transition rounded-lg text-primary border border-primary">
                            Log In
                         </a>
                      </Link>
@@ -65,8 +65,8 @@ const Navbar = () => {
                id="navbar-search"
             >
                <SearchBox />
-               <div className="font-bold flex md:hidden justify-center items-center gap-2 py-4 md:py-0 text-gray-900 dark:text-gray-100">
-                  <Link href={"/signin"}>
+               <div className="font-light flex md:hidden justify-center items-center gap-2 py-4 md:py-0 text-gray-900 dark:text-gray-100">
+                  <Link href={"/signup"}>
                      <a className="bg-primary px-3 py-2 text-white rounded-lg dark:text-gray-800">
                         Sign up
                      </a>

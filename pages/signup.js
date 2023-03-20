@@ -1,5 +1,4 @@
 import Image from "next/image";
-import wave from "../public/images/wave.png";
 import { useEffect, useState, useRef } from "react";
 import sign from "../public/images/signup.svg";
 import Input from "../components/Input";
@@ -82,20 +81,9 @@ const SignupForm = () => {
 };
 
 const Signup = () => {
-   // const [minasHeight, setMinasHeight] = useState(0);
-   // useEffect(() => {
-   //    const navbarHeight = document.getElementById("navbar").offsetHeight;
-   //    const footerHeight = document.getElementById("footer").offsetHeight;
-   //    setMinasHeight(navbarHeight + footerHeight);
-   // }, []);
    return (
-      <div className="overflow-hidden">
-         <div className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 w-full h-full blur-3xl -z-10 -rotate-180">
-            <Image src={wave} layout="fill" />
-         </div>
          <div
             className="container grid grid-cols-1 md:grid-cols-12 items-center gap-8 min-h-screen"
-            // style={{ minHeight: `calc(100vh - ${minasHeight}px)` }}
          >
             <div className="hidden md:block col-span-4">
                <Image src={sign} />
@@ -116,7 +104,6 @@ const Signup = () => {
                </div>
             </div>
          </div>
-      </div>
    );
 };
 

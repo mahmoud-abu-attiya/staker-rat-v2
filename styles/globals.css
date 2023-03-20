@@ -29,3 +29,11 @@ body{
       to   { transform: translate(0, -0px) rotate(-4deg); }
    }
 }
+.cover{
+   background-image: url('/images/rain3.gif');
+   background-position: center;
+   /* background-size: cover;
+   background-repeat: no-repeat;
+   background-attachment: fixed; */
+   background-size: contain;
+}
