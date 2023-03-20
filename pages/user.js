@@ -31,7 +31,7 @@ const User = () => {
       "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab quibusdam aut neque assumenda recusandae non cum, nesciunt eaque, quos explicabo nemo iste quae! Nam voluptatum suscipit dolores vel necessitatibus sit?";
    return (
       <div className="container flex flex-col justify-center items-center gap-8 min-h-screen">
-         <div className="avatar text-center mt-20">
+         <div className="avatar text-center mt-4">
             <div className="img h-52 w-52 relative rounded-full overflow-hidden mx-auto shadow-md border-4 border-primary">
                <img src={"images/mahmoud.jpg"} alt="" />
             </div>
