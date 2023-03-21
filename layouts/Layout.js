@@ -7,8 +7,9 @@ import wave from "../public/images/wave.png";
 
 export default function Layout({ children }) {
    const openmenu = useSelector((state) => state.openMenu.value);
+   const lang = useSelector((state) => state.lang.value);
    return (
-      <>
+      <div className={lang == "ar" ? "ar" : ""}>
          <Navbar />
          {openmenu && <Overlay />}
          <main>
@@ -20,6 +21,6 @@ export default function Layout({ children }) {
             </div>
          </main>
          <Footer />
-      </>
+      </div>
    );
 }

@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux'
 
 const SearchBox = () => {
    const [isSuggestionsOpen, setIsSuggestionsOpen] = useState(false);
+   const lang = useSelector((state) => state.lang.value);
    return (
       <div className="flex w-full mt-3 md:mt-0 relative">
          <div className="relative md:block w-full">
@@ -30,7 +31,7 @@ const SearchBox = () => {
                type="text"
                id="search-navbar"
                className="block p-2 pl-10 w-full text-gray-900 bg-gray-50 rounded-lg border border-gray-300 sm:text-sm focus:border-primary outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
-               placeholder="Search..."
+               placeholder={lang === "en" ? "Search" : "بحث..."}
             />
          </div>
          {isSuggestionsOpen && (

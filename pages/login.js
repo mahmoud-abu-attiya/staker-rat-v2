@@ -4,14 +4,16 @@ import log from "../public/images/login.svg";
 import Link from "next/link";
 import Input from "../components/Input";
 import { handleSubmit } from "../components/hof";
+import { useSelector } from "react-redux";
 
 const LoginForm = () => {
+   const lang = useSelector((state) => state.lang.value);
    return (
       <form onSubmit={(e) => handleSubmit(e)}>
          <div className="mb-6">
             <Input
                id="email"
-               label="Email address"
+               label={lang == "ar" ? "البريد الألكتروني" : "Email"}
                type="email"
                placeholder="name@email.com"
                required
@@ -21,7 +23,7 @@ const LoginForm = () => {
          <div className="mb-4">
             <Input
                id="password"
-               label="Password"
+               label={lang == "ar" ? "كلمة المرور" : "Password"}
                type="password"
                placeholder="•••••••••"
                required
@@ -30,7 +32,7 @@ const LoginForm = () => {
          </div>
          <Link href={"/forget_password"}>
             <span className="text-blue-600 text-sm hover:underline cursor-pointer">
-               Forget Password!
+               {lang == "ar" ? "نسيت كلمة المرور؟" : "Forgot password?"}
             </span>
          </Link>
          <div className="flex items-start mt-4 mb-6">
@@ -47,20 +49,21 @@ const LoginForm = () => {
                htmlFor="remember"
                className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
             >
-               Remember me.
+               {lang == "ar" ? "تذكرني" : "Remember me"}
             </label>
          </div>
          <button
             type="submit"
             className="text-white text-xl bg-primary hover:bg-primary/75 focus:ring-4 focus:outline-none transition shadow-md font-medium rounded-lg w-full sm:w-auto px-5 py-2.5 text-center"
          >
-            Log in
+            {lang == "ar" ? "تسجيل الدخول" : "Login"}
          </button>
       </form>
    );
 };
 
 const Login = () => {
+   const lang = useSelector((state) => state.lang.value);
    return (
       <div
          className="container grid grid-cols-1 md:grid-cols-12 items-center gap-8"
@@ -75,7 +78,7 @@ const Login = () => {
                   <div className="mx-auto">
                      <div>
                         <h1 className="text-2xl font-semibold dark:text-white mb-4">
-                           Welcome back!
+                           {lang == "ar" ? "مرحبا بعودتك" : "Welcome back"}!
                         </h1>
                      </div>
                      <LoginForm />

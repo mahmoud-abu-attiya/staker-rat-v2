@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+   font-family: Cairo;
+   src: url('/fonts/Cairo/Cairo-Regular.ttf');
+}
+
 body{
    @apply bg-white dark:bg-gray-900
 }
@@ -13,9 +18,6 @@ body{
       animation-duration: 3s;
       animation-iteration-count: infinite;
       animation-timing-function: ease-in-out;
-      /* animation-timing-function: ease-out; */
-      /* margin-left: 30px;
-      margin-top: 5px; */
 }
 @keyframes floating {
    from { transform: translate(0,  0px) rotate(-6deg); }
@@ -32,8 +34,11 @@ body{
 .cover{
    background-image: url('/images/rain3.gif');
    background-position: center;
-   /* background-size: cover;
-   background-repeat: no-repeat;
-   background-attachment: fixed; */
    background-size: contain;
+}
+
+.ar{
+   font-family: Cairo;
+   text-align: right;
+   direction: rtl;
 }

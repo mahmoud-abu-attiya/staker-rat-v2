@@ -3,16 +3,18 @@ import { useEffect, useState, useRef } from "react";
 import sign from "../public/images/signup.svg";
 import Input from "../components/Input";
 import { handleSubmit } from "../components/hof";
+import { useSelector } from "react-redux";
 
 const SignupForm = () => {
+   const lang = useSelector((state) => state.lang.value);
    return (
       <form onSubmit={(e) => handleSubmit(e)}>
          <div className="grid gap-6 mb-6 md:grid-cols-2">
             <div>
                <Input
                   id="name"
-                  label="Your name"
-                  placeholder="Name"
+                  label={lang == "ar" ? "الاسم" : "Name"}
+                  placeholder={lang == "ar" ? "أدخل أسمك" : "Enter your name"}
                   required
                   name="name"
                />
@@ -20,7 +22,7 @@ const SignupForm = () => {
             <div>
                <Input
                   id="phone"
-                  label="Phone number"
+                  label={lang == "ar" ? "رقم الهاتف" : "Phone"}
                   placeholder="0123456789"
                   name="phone"
                />
@@ -29,7 +31,7 @@ const SignupForm = () => {
          <div className="mb-6">
             <Input
                id="email"
-               label="Email address"
+               label={lang == "ar" ? "البريد الالكتروني" : "Email"}
                placeholder="name@email.com"
                required
                name="email"
@@ -39,7 +41,7 @@ const SignupForm = () => {
          <div className="mb-6">
             <Input
                id="password"
-               label="Password"
+               label={lang == "ar" ? "كلمة المرور" : "Password"}
                placeholder="•••••••••"
                required
                name="password"
@@ -60,12 +62,13 @@ const SignupForm = () => {
                htmlFor="remember"
                className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
             >
-               I agree with the{" "}
+               {lang == "ar" ? "انا اوافق علي " : "I agree with the"}
                <a
                   href="#"
                   className="text-blue-600 hover:underline dark:text-blue-500"
                >
-                  terms and conditions
+                  {lang == "ar" ? "الشروط والأحكام" : "terms and conditions"}
+
                </a>
                .
             </label>
@@ -74,13 +77,14 @@ const SignupForm = () => {
             type="submit"
             className="text-white text-xl bg-primary hover:bg-primary/75 focus:ring-4 focus:outline-none transition shadow-md font-medium rounded-lg w-full sm:w-auto px-5 py-2.5 text-center"
          >
-            Submit
+            {lang == "ar" ? "تسجيل" : "Sign up"}
          </button>
       </form>
    );
 };
 
 const Signup = () => {
+   const lang = useSelector((state) => state.lang.value);
    return (
          <div
             className="container grid grid-cols-1 md:grid-cols-12 items-center gap-8 min-h-screen"
@@ -95,7 +99,7 @@ const Signup = () => {
                      <div className="mx-auto">
                         <div>
                            <h1 className="text-2xl font-semibold dark:text-white mb-4">
-                              Welcome!
+                              {lang == "ar" ? "مرحبا" : "Welcome"}!
                            </h1>
                         </div>
                         <SignupForm />

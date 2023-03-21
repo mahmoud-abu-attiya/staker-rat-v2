@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 
 const Messages = ({ text, msgs }) => {
+   const rtlChar = /[\u0600-\u06FF]/;
    return (
       <div className="dark:text-white">
          <h1 className="text-2xl md:text-4xl lg:text-5xl drop-shadow-md my-4 font-bold">
@@ -14,7 +16,7 @@ const Messages = ({ text, msgs }) => {
                className="flex gap-4 p-2 md:p-4 rounded-lg bg-gray-100 dark:bg-gray-800 shadow-md border dark:border-gray-700"
             >
                <div className="flex flex-col justify-center">
-                  <p className="text-gray-700 dark:text-gray-200">{msg.text}</p>
+                  <p dir={msg.text.match(rtlChar) ? "rtl" : "ltr"} className={`text-gray-700 dark:text-gray-200 ${msg.text.match(rtlChar) ? "text-right" : "text-left"}`}>{msg.text}</p>
                   <div className="flex items-center justify-between border-t border-1 dark:border-gray-700 pt-4 mt-4">
                      <div className="date text-gray-400 dark:text-gray-500 text-xs">2023/3/15 | 05:08 PM</div>
                      <p className="text-xs md:text-sm"><span className="text-primary">S</span>taker <span className="text-primary">R</span>at</p>
@@ -33,16 +35,20 @@ const Messages = ({ text, msgs }) => {
 };
 
 const MessagesSwiper = () => {
+   const lang = useSelector((state) => state.lang.value);
    const [translate, setTranslate] = useState("0");
    const msgs = [
       {
          text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non possimus consequatur itaque sit? Voluptates provident quibusdam nihil, voluptate deserunt dicta dolorem! Vel exercitationem voluptates laboriosam repellat voluptatibus labore voluptas maiores?",
       },
       {
-         text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non possimus consequatur itaque sit? Voluptates provident quibusdam nihil, voluptate deserunt dicta dolorem! Vel exercitationem voluptates laboriosam repellat voluptatibus labore voluptas maiores?",
+         text: "لوريم ايبسوم دولار سيت أميت ,كونسيكتيتور أدايبا يسكينج أليايت,سيت دو أيوسمود تيمبور أنكايديديونتيوت لابوري ات دولار ماجنا أليكيوا . يوت انيم أد مينيم فينايم,كيواس نوستريد  أكسير سيتاشن يللأمكو لابورأس نيسي يت أليكيوب أكس أيا كوممودو كونسيكيوات",
       },
       {
          text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non possimus consequatur itaque sit? Voluptates provident quibusdam nihil, voluptate deserunt dicta dolorem! Vel exercitationem voluptates laboriosam repellat voluptatibus labore voluptas maiores?",
+      },
+      {
+         text: "لوريم ايبسوم دولار سيت أميت ,كونسيكتيتور أدايبا يسكينج أليايت,سيت دو أيوسمود تيمبور أنكايديديونتيوت لابوري ات دولار ماجنا أليكيوا . يوت انيم أد مينيم فينايم,كيواس نوستريد  أكسير سيتاشن يللأمكو لابورأس نيسي يت أليكيوب أكس أيا كوممودو كونسيكيوات",
       },
    ];
    return (
@@ -56,7 +62,8 @@ const MessagesSwiper = () => {
                }`}
                onClick={() => setTranslate("0")}
             >
-               Messages
+               <p className="hidden sm:block">{lang == "en" ? "Inbox" : "الوارد"} <span className="bg-primary rounded-xl px-1 text-white h-fit">3</span></p>
+               <p className="block sm:hidden"><i class="fas fa-inbox"></i> <span className="bg-primary rounded-xl px-1 text-white h-fit">3</span></p>
             </div>
             <div
                className={`p-2 md:p-4 rounded-md cursor-pointer text-center text-xs md:text-xl transition duration-500 shadow dark:text-white md:font-bold ${
@@ -66,7 +73,8 @@ const MessagesSwiper = () => {
                }`}
                onClick={() => setTranslate("25")}
             >
-               New
+              <p className="hidden sm:block">{lang == "en" ? "new" : "جديد"} <span className="bg-primary rounded-xl px-1 text-white h-fit">3</span></p>
+              <p className="block sm:hidden"><i class="fas fa-comment-plus"></i> <span className="bg-primary rounded-xl px-1 text-white h-fit">3</span></p>
             </div>
             <div
                className={`p-2 md:p-4 rounded-md cursor-pointer text-center text-xs md:text-xl transition duration-500 shadow dark:text-white md:font-bold ${
@@ -76,7 +84,8 @@ const MessagesSwiper = () => {
                }`}
                onClick={() => setTranslate("50")}
             >
-               Favorit
+               <p className="hidden sm:block">{lang == "en" ? "Favorit" : "مفضلة"} <span className="bg-primary rounded-xl px-1 text-white h-fit">3</span></p>
+               <p className="block sm:hidden"><i class="fas fa-star"></i> <span className="bg-primary rounded-xl px-1 text-white h-fit">3</span></p>
             </div>
             <div
                className={`p-2 md:p-4 rounded-md cursor-pointer text-center text-xs md:text-xl transition duration-500 shadow dark:text-white md:font-bold ${
@@ -86,18 +95,19 @@ const MessagesSwiper = () => {
                }`}
                onClick={() => setTranslate("75")}
             >
-               Sent
+               <p className="hidden sm:block">{lang == "en" ? "Sent" : "مرسلة"} <span className="bg-primary rounded-xl px-1 text-white h-fit">3</span></p>
+               <p className="block sm:hidden"><i class="fas fa-paper-plane"></i> <span className="bg-primary rounded-xl px-1 text-white h-fit">3</span></p>
             </div>
          </div>
          <div className="w-full overflow-hidden">
             <div
                className="w-[400%] grid grid-cols-4 transition duration-500 "
-               style={{ transform: `translateX(-${translate}%)` }}
+               style={{ transform: `translateX(${lang =="en" ? "-" + translate : translate}%)` }}
             >
-               <Messages msgs={msgs} text="Messages" />
-               <Messages msgs={msgs} text="New" />
-               <Messages msgs={msgs} text="Favorit" />
-               <Messages msgs={msgs} text="Sent" />
+               <Messages msgs={msgs} text={lang == "en" ? "Inbox" : "الوارد"} />
+               <Messages msgs={msgs} text={lang == "en" ? "new" : "جديد"} />
+               <Messages msgs={msgs} text={lang == "en" ? "Favorit" : "مفضلة"} />
+               <Messages msgs={msgs} text={lang == "en" ? "Sent" : "مرسلة"} />
             </div>
          </div>
       </div>
