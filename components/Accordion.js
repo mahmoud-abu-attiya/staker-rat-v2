@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setLang } from "../slices/langSlice";
+import { setTheme } from "../slices/themeSlice";
 
 export const AccordionItem = ({
    children,
@@ -48,8 +49,20 @@ export const AccordionItem = ({
    );
 };
 const Accordion = () => {
-   const lang = useSelector((state) => state.lang.value);
    const dispatch = useDispatch();
+   const lang = useSelector((state) => state.lang.value);
+   const theme = useSelector((state) => state.theme.value);
+
+   const setThemeValue = (theme) => {
+      if (theme == "") {
+         localStorage.removeItem("theme");
+         dispatch(setTheme(""));
+      } else {
+         localStorage.theme = theme;
+         dispatch(setTheme(theme));
+      }
+   };
+
    const [active, setActive] = useState();
 
    const handleToggle = (index) => {
@@ -77,13 +90,23 @@ const Accordion = () => {
                         handleToggle={handleToggle}
                         title={lang == "ar" ? "المظهر" : "Theme"}
                      >
-                        <button className="shadow px-6 text-xl py-3 rounded-md bg-gray-50 dark:bg-gray-800">
+                        <button
+                           onClick={() => setThemeValue("light")}
+                           className={`shadow px-6 text-xl py-3 rounded-md bg-gray-50 dark:bg-gray-800 ${theme == "light" && "bg-gray-100 dark:bg-gray-700 shadow-inner"}`}
+                        >
                            {lang == "ar" ? "فاتح" : "Light"}
                         </button>
-                        <button className="shadow px-6 text-xl py-3 rounded-md bg-gray-50 dark:bg-gray-800">
+                        <button
+                           onClick={() => setThemeValue("dark")}
+                           className={`shadow px-6 text-xl py-3 rounded-md bg-gray-50 dark:bg-gray-800 ${theme == "dark" && "bg-gray-100 dark:bg-gray-700 shadow-inner"}`}
+                        >
                            {lang == "ar" ? "داكن" : "Dark"}
                         </button>
-                        <button className="shadow px-6 text-xl py-3 rounded-md bg-gray-50 dark:bg-gray-800">
+                        <button
+                           
+                           onClick={() => setThemeValue("")}
+                           className={`shadow px-6 text-xl py-3 rounded-md bg-gray-50 dark:bg-gray-800 ${theme == "" && "bg-gray-100 dark:bg-gray-700 shadow-inner"}`}
+                        >
                            {lang == "ar" ? "النظام" : "System"}
                         </button>
                      </AccordionItem>
@@ -93,10 +116,20 @@ const Accordion = () => {
                         handleToggle={handleToggle}
                         title={lang == "ar" ? "اللغة" : "Language"}
                      >
-                        <button onClick={() => changeLang("en")} className={`shadow px-6 text-xl py-3 rounded-md bg-gray-50 dark:bg-gray-800 transition ${lang == "en" && "shadow-inner bg-gray-100"}`}>
+                        <button
+                           onClick={() => changeLang("en")}
+                           className={`shadow px-6 text-xl py-3 rounded-md bg-gray-50 dark:bg-gray-800 transition ${
+                              lang == "en" && "bg-gray-100 dark:bg-gray-700 shadow-inner"
+                           }`}
+                        >
                            English
                         </button>
-                        <button onClick={() => changeLang("ar")} className={`ar shadow px-6 text-xl py-3 rounded-md bg-gray-50 dark:bg-gray-800 transition ${lang == "ar" && "shadow-inner bg-gray-100"}`}>
+                        <button
+                           onClick={() => changeLang("ar")}
+                           className={`ar shadow px-6 text-xl py-3 rounded-md bg-gray-50 dark:bg-gray-800 transition ${
+                              lang == "ar" && "bg-gray-100 dark:bg-gray-700 shadow-inner"
+                           }`}
+                        >
                            العربية
                         </button>
                      </AccordionItem>
