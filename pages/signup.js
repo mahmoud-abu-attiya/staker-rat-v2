@@ -1,15 +1,15 @@
 import Image from "next/image";
-import { useEffect, useState, useRef } from "react";
 import sign from "../public/images/signup.svg";
 import Input from "../components/Input";
 import { handleSubmit } from "../components/hof";
 import { useSelector } from "react-redux";
+import Link from "next/link";
 
 const SignupForm = () => {
    const lang = useSelector((state) => state.lang.value);
    return (
       <form onSubmit={(e) => handleSubmit(e)}>
-         <div className="grid gap-6 mb-6 md:grid-cols-2">
+         <div className="grid gap-6 mb-4 md:grid-cols-2">
             <div>
                <Input
                   id="name"
@@ -28,7 +28,7 @@ const SignupForm = () => {
                />
             </div>
          </div>
-         <div className="mb-6">
+         <div className="mb-4">
             <Input
                id="email"
                label={lang == "ar" ? "البريد الالكتروني" : "Email"}
@@ -38,7 +38,7 @@ const SignupForm = () => {
                type="email"
             />
          </div>
-         <div className="mb-6">
+         <div className="mb-4">
             <Input
                id="password"
                label={lang == "ar" ? "كلمة المرور" : "Password"}
@@ -48,7 +48,14 @@ const SignupForm = () => {
                type="password"
             />
          </div>
-         <div className="flex items-start mb-6">
+         <Link href="/login">
+         <a
+            className="text-gray-900 dark:text-gray-300 hover:text-blue-500 hover:underline text-sm"
+         >
+            {lang == "ar" ? "هل لديك حساب؟" : "Have an account?"}
+         </a>
+         </Link>
+         <div className="flex items-start my-4">
             <div className="flex items-center h-5">
                <input
                   id="remember"
@@ -58,17 +65,17 @@ const SignupForm = () => {
                   required
                />
             </div>
+            
             <label
                htmlFor="remember"
                className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
             >
-               {lang == "ar" ? "انا اوافق علي " : "I agree with the"}
+               {lang == "ar" ? "انا اوافق علي " : "I agree with the"}{" "}
                <a
                   href="#"
                   className="text-blue-600 hover:underline dark:text-blue-500"
                >
                   {lang == "ar" ? "الشروط والأحكام" : "terms and conditions"}
-
                </a>
                .
             </label>
