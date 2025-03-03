@@ -14,26 +14,18 @@ const Footer = () => {
             </span>
             <ul className="flex flex-wrap items-center mt-3 text-sm text-gray-500 dark:text-gray-400 sm:mt-0">
                <li>
-                  <Link href="/about">
-                     <a className="mr-4 hover:underline md:mr-6 ">
-                        {lang == "ar" ? "من نحن" : "About"}
-                     </a>
+                  <Link href="/about" className="mr-4 hover:underline md:mr-6">
+                     {lang == "ar" ? "من نحن" : "About"}
                   </Link>
                </li>
                <li>
-                  <Link href="/terms">
-                     <a className="mr-4 hover:underline md:mr-6">
-                        {lang == "ar"
-                           ? "الشروط والأحكام"
-                           : "Terms & Conditions"}
-                     </a>
+                  <Link href="/terms" className="mr-4 hover:underline md:mr-6">
+                     {lang == "ar" ? "الشروط والأحكام" : "Terms & Conditions"}
                   </Link>
                </li>
                <li>
-                  <Link href={"/contact"}>
-                     <a className="hover:underline">
-                        {lang == "ar" ? "تواصل معنا" : "Contact"}
-                     </a>
+                  <Link href={"/contact"} className="hover:underline">
+                     {lang == "ar" ? "تواصل معنا" : "Contact"}
                   </Link>
                </li>
             </ul>

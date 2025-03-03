@@ -28,7 +28,7 @@ export default function Layout({ children }) {
          {openmenu && <Overlay />}
          <main>
                <div className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 w-full h-full blur-3xl -z-10 -rotate-180">
-                  <Image src={wave} layout="fill" />
+                  <Image src={wave} layout="fill" alt="wave Stalker rat" />
                </div>
                {children}
          </main>

@@ -1,11 +1,18 @@
 import { useState } from "react";
 import avatar from "../public/images/avatar.svg";
 import Image from "next/image";
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from "react-redux";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 
 const SearchBox = () => {
    const [isSuggestionsOpen, setIsSuggestionsOpen] = useState(false);
    const lang = useSelector((state) => state.lang.value);
+   const router = useRouter();
+   useEffect(() => {
+      setIsSuggestionsOpen(false);
+   }, [router])
    return (
       <div className="flex w-full mt-3 md:mt-0 relative">
          <div className="relative md:block w-full">
@@ -27,7 +34,7 @@ const SearchBox = () => {
             </div>
             <input
                onFocus={() => setIsSuggestionsOpen(true)}
-               onBlur={() => setIsSuggestionsOpen(false)}
+               // onBlur={() => setIsSuggestionsOpen(false)}
                type="text"
                id="search-navbar"
                className="block p-2 pl-10 w-full text-gray-900 bg-gray-50 rounded-lg border border-gray-300 sm:text-sm focus:border-primary outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
@@ -36,24 +43,30 @@ const SearchBox = () => {
          </div>
          {isSuggestionsOpen && (
             <div className="suggetions w-full bg-gray-100 dark:bg-gray-700 p-2 rounded-lg absolute space-y-2 shadow-xl border border-gray-300 dark:border-gray-600">
-               <div className="person py-2 sm:px-4 px-2 flex items-center gap-2 sm:gap-4 rounded-lg bg-gray-50 dark:bg-gray-800 dark:text-gray-300 shadow-sm dark:shadow-md">
-                  <div className="img-container w-16 h-16">
-                     <Image src={avatar} />
+               <Link href={"/user/1"} className="cursor-pointer">
+                  <div className="person py-2 sm:px-4 px-2 flex items-center gap-2 sm:gap-4 rounded-lg bg-gray-50 dark:bg-gray-800 dark:text-gray-300 shadow-sm dark:shadow-md">
+                     <div className="img-container w-16 h-16">
+                        <Image src={avatar} alt="mahmoud abu attiya" />
+                     </div>
+                     <p className="sm:text-xl">Mahmoud Abu-Attiya</p>
                   </div>
-                  <p className="sm:text-xl">Mahmoud Abu-Attiya</p>
-               </div>
-               <div className="person py-2 sm:px-4 px-2 flex items-center gap-2 sm:gap-4 rounded-lg bg-gray-50 dark:bg-gray-800 dark:text-gray-300 shadow-sm dark:shadow-md">
-                  <div className="img-container w-16 h-16">
-                     <Image src={avatar} />
+               </Link>
+               <Link href={"/user/1"} className="cursor-pointer">
+                  <div className="person py-2 sm:px-4 px-2 flex items-center gap-2 sm:gap-4 rounded-lg bg-gray-50 dark:bg-gray-800 dark:text-gray-300 shadow-sm dark:shadow-md">
+                     <div className="img-container w-16 h-16">
+                        <Image src={avatar} alt="mahmoud abu attiya" />
+                     </div>
+                     <p className="sm:text-xl">Mahmoud Abu-Attiya</p>
                   </div>
-                  <p className="sm:text-xl">Mahmoud Abu-Attiya</p>
-               </div>
-               <div className="person py-2 sm:px-4 px-2 flex items-center gap-2 sm:gap-4 rounded-lg bg-gray-50 dark:bg-gray-800 dark:text-gray-300 shadow-sm dark:shadow-md">
-                  <div className="img-container w-16 h-16">
-                     <Image src={avatar} />
+               </Link>
+               <Link href={"/user/1"} className="cursor-pointer">
+                  <div className="person py-2 sm:px-4 px-2 flex items-center gap-2 sm:gap-4 rounded-lg bg-gray-50 dark:bg-gray-800 dark:text-gray-300 shadow-sm dark:shadow-md">
+                     <div className="img-container w-16 h-16">
+                        <Image src={avatar} alt="mahmoud abu attiya" />
+                     </div>
+                     <p className="sm:text-xl">Mahmoud Abu-Attiya</p>
                   </div>
-                  <p className="sm:text-xl">Mahmoud Abu-Attiya</p>
-               </div>
+               </Link>
                {/* <div className="person p-2 rounded-lg bg-gray-50 dark:bg-gray-800 text-gray-300 shadow-sm">Mahmoud</div>
             <div className="person p-2 rounded-lg bg-gray-50 dark:bg-gray-800 text-gray-300 shadow-sm">Mahmoud</div> */}
             </div>

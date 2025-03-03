@@ -48,12 +48,10 @@ const SignupForm = () => {
                type="password"
             />
          </div>
-         <Link href="/login">
-         <a
-            className="text-gray-900 dark:text-gray-300 hover:text-blue-500 hover:underline text-sm"
-         >
+         <Link href="/login" className="text-gray-900 dark:text-gray-300 hover:text-blue-500 hover:underline text-sm">
+
             {lang == "ar" ? "هل لديك حساب؟" : "Have an account?"}
-         </a>
+
          </Link>
          <div className="flex items-start my-4">
             <div className="flex items-center h-5">
@@ -71,12 +69,12 @@ const SignupForm = () => {
                className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
             >
                {lang == "ar" ? "انا اوافق علي " : "I agree with the"}{" "}
-               <a
+               <Link
                   href="#"
                   className="text-blue-600 hover:underline dark:text-blue-500"
                >
                   {lang == "ar" ? "الشروط والأحكام" : "terms and conditions"}
-               </a>
+               </Link>
                .
             </label>
          </div>
@@ -97,7 +95,7 @@ const Signup = () => {
             className="container grid grid-cols-1 md:grid-cols-12 items-center gap-8 min-h-screen"
          >
             <div className="hidden md:block col-span-4">
-               <Image src={sign} />
+               <Image src={sign} alt="Sign in" />
             </div>
             <div className="min-h-screen flex flex-col justify-center col-span-8">
                <div className="relative py-3 sm:mx-auto">

@@ -10,12 +10,13 @@ export default function Home() {
    return (
       <div className="overflow-hidden">
          <div className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 w-full h-full blur-3xl -z-10 -rotate-180">
-            <Image src={wave} layout="fill" />
+            <Image src={wave} layout="fill" alt="wave Stalker rat" />
          </div>
          <div className="container grid place-content-center gap-8 min-h-screen">
             {lang == "ar" ? (
                <h1 className="text-slate-900 drop-shadow-md font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-tight text-center dark:text-white">
-                  مع <span className="text-primary">Staker Rat</span> ، اجعل أصدقاءك يصرحون لك بما لا تعرفه عن نفسك.
+                  مع <span className="text-primary">Staker Rat</span> ، اجعل
+                  أصدقاءك يصرحون لك بما لا تعرفه عن نفسك.
                </h1>
             ) : (
                <h1 className="text-slate-900 drop-shadow-md font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-tight text-center dark:text-white">
@@ -53,15 +54,17 @@ export default function Home() {
                </p>
             )}
             <div className="font-bold w-full max-w-[500px] mx-auto flex flex-col sm:flex-row justify-center items-stretch sm:items-center gap-4 py-4 md:py-0 text-gray-900 dark:text-gray-100">
-               <Link href={"/signup"}>
-                  <a className="bg-primary px-6 py-4 text-white rounded-xl grow shadow-md hover:bg-primary/75 transition text-center text-xl">
-                     {lang == "ar" ? "سجل الآن" : "Sign Up"}
-                  </a>
+               <Link
+                  href={"/signup"}
+                  className="bg-primary px-6 py-4 text-white rounded-xl grow shadow-md hover:bg-primary/75 transition text-center text-xl"
+               >
+                  {lang == "ar" ? "سجل الآن" : "Sign Up"}
                </Link>
-               <Link href={"/login"}>
-                  <a className="px-6 py-4 rounded-xl grow shadow-md hover:bg-primary/25 transition text-center text-xl text-primary border border-primary">
-                     {lang == "ar" ? "تسجيل الدخول" : "Login"}
-                  </a>
+               <Link
+                  href={"/login"}
+                  className="px-6 py-4 rounded-xl grow shadow-md hover:bg-primary/25 transition text-center text-xl text-primary border border-primary"
+               >
+                  {lang == "ar" ? "تسجيل الدخول" : "Login"}
                </Link>
             </div>
          </div>
