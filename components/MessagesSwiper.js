@@ -55,7 +55,7 @@ import Messages from "./Message";
 
 const MessagesSwiper = () => {
    const lang = useSelector((state) => state.lang.value);
-   const [translate, setTranslate] = useState("0");
+   const [translate, setTranslate] = useState("-0");
    const taps = [
       { en: "Inbox", ar: "الوارد" },
       { en: "Favorit", ar: "المفضلة" },
@@ -83,7 +83,7 @@ const MessagesSwiper = () => {
                <div
                   key={index}
                   className={`p-2 md:p-4 rounded-md cursor-pointer text-center text-xs md:text-xl transition duration-500 shadow dark:text-white md:font-bold ${
-                     translate === (-index * 100) / 3
+                     +translate === (-index * 100) / 3
                         ? "shadow-inner bg-gray-200 dark:bg-gray-700"
                         : "dark:bg-gray-800 bg-gray-100"
                   }`}

@@ -136,15 +136,15 @@ const Terms = () => {
    return (
       <div className="container text-white py-10 min-h-screen">
          {lang === "en" ? (
-            <h1 className="drop-shadow-md mb-8 font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-tight text-white">
+            <h1 className="drop-shadow-md mb-8 font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-tight text-gray-800 dark:text-white">
                Terms <span className="text-primary">&</span> Conditions
             </h1>
          ) : (
-            <h1 className="drop-shadow-md mb-8 font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-tight text-white">
+            <h1 className="drop-shadow-md mb-8 font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-tight text-gray-800 dark:text-white">
                الشروط <span className="text-primary">و</span> الأحكام
             </h1>
          )}
-         <p className="text-lg">
+         <p className="text-lg text-gray-800 dark:text-white">
             {lang === "en"
                ? "We understand your fears and concerns regarding the privacy of your data on the internet. We have prepared this policy to help you understand the nature of the data we collect from your when visiting Stalker Rat and how we use this personal data."
                : "نقدر مخاوفكم واهتمامكم بشأن خصوصية بياناتكم على شبكة الإنترنت. لقد تم إعداد هذه السياسة لمساعدتكم في تفهم طبيعة البيانات التي نقوم بتجميعها منكم عند زيارتكم لموقعنا على شبكة الانترنت وكيفية تعاملنا مع هذه البيانات الشخصية."}
@@ -154,13 +154,13 @@ const Terms = () => {
                ? termsData.en.map((term, index) => (
                     <div className="" key={index}>
                        <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-primary">{term.title}</h3>
-                       <p className="text-lg">{term.content}</p>
+                       <p className="text-lg text-gray-800 dark:text-white">{term.content}</p>
                     </div>
                  ))
                : termsData.ar.map((term, index) => (
                     <div className="" key={index}>
                        <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-primary">{term.title}</h3>
-                       <p className="text-lg">{term.content}</p>
+                       <p className="text-lg text-gray-800 dark:text-white">{term.content}</p>
                     </div>
                  ))}
          </section>

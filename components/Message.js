@@ -19,18 +19,26 @@ const Messages = ({ text, msgs }) => {
                });
                canvas.toBlob(async (blob) => {
                   if (blob) {
-                     const file = new File([blob], "message.png", { type: "image/png" });
+                     const file = new File([blob], "message.png", {
+                        type: "image/png",
+                     });
 
-                     // if (navigator.share) {
+                     if (navigator.share) {
                         // Web Share API
                         await navigator.share({
                            files: [file],
                            title: "Check out this message!",
                            text: "Hey, look at this message!",
                         });
-                     // } else {
-                     //    alert("Sharing is not supported on this browser.");
-                     // }
+                     } else {
+                        alert("Sharing is not supported on this browser.");
+                        // Create an anchor element to download the image
+                        const imgData = canvas.toDataURL("image/png");
+                        const link = document.createElement("a");
+                        link.href = imgData;
+                        link.download = `message_${index + 1}.png`; // Set file name dynamically
+                        link.click();
+                     }
                   }
                }, "image/png");
             } catch (error) {
@@ -73,14 +81,14 @@ const Messages = ({ text, msgs }) => {
                         <div className="flex gap-2 md:gap-4">
                            <button
                               onClick={() => captureAndShare(i)}
-                              className="px-2 md:px-3 py-1 md:py-2 bg-gray-200 dark:bg-gray-700 text-xs md:text-base hover:shadow-inner transition rounded-md shadow text-blue-500"
+                              className="flex justify-center items-center px-2 md:px-3 py-1 md:py-2 bg-gray-200 dark:bg-gray-700 text-xs md:text-base hover:shadow-inner transition rounded-md shadow text-blue-500"
                            >
                               <i className="fad fa-share-alt"></i>
                            </button>
-                           <button className="px-2 md:px-3 py-1 md:py-2 bg-gray-200 dark:bg-gray-700 text-xs md:text-base hover:shadow-inner transition rounded-md shadow text-yellow-500">
+                           <button className="flex justify-center items-center px-2 md:px-3 py-1 md:py-2 bg-gray-200 dark:bg-gray-700 text-xs md:text-base hover:shadow-inner transition rounded-md shadow text-yellow-500">
                               <i className="far fa-heart"></i>
                            </button>
-                           <button className="px-2 md:px-3 py-1 md:py-2 bg-gray-200 dark:bg-gray-700 text-xs md:text-base hover:shadow-inner transition rounded-md shadow text-red-500">
+                           <button className="flex justify-center items-center px-2 md:px-3 py-1 md:py-2 bg-gray-200 dark:bg-gray-700 text-xs md:text-base hover:shadow-inner transition rounded-md shadow text-red-500">
                               <i className="fad fa-trash-alt"></i>
                            </button>
                         </div>

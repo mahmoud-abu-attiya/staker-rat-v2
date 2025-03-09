@@ -3,6 +3,7 @@ import { handleSubmit } from "../../components/hof";
 import { users } from "../api/hello";
 import { useRouter } from "next/router";
 import UserLoading from "../../components/loadings/UserLoading";
+import Image from "next/image";
 
 const Bio = ({ bio }) => {
    const [isReadMore, setIsReadMore] = useState(true);
@@ -44,7 +45,8 @@ const User = () => {
          <div className="container flex flex-col justify-center items-center gap-8 min-h-screen">
             <div className="avatar text-center mt-4">
                <div className="img h-52 w-52 relative rounded-full overflow-hidden mx-auto shadow-md border-4 border-primary">
-                  <img src={user.img} alt="" className="w-full h-full object-cover" />
+                  {/* <img src={user.img} alt="" className="w-full h-full object-cover" /> */}
+                  <Image src={user.img} alt='user' priority width={500} height={500} className="w-full h-full object-cover" />
                </div>
                <div className="name mt-4">
                   <h1 className="text-3xl sm:text-4xl font-bold drop-shadow-md dark:text-white">

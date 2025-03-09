@@ -70,7 +70,7 @@ const SignupForm = () => {
             >
                {lang == "ar" ? "انا اوافق علي " : "I agree with the"}{" "}
                <Link
-                  href="#"
+                  href="/terms"
                   className="text-blue-600 hover:underline dark:text-blue-500"
                >
                   {lang == "ar" ? "الشروط والأحكام" : "terms and conditions"}

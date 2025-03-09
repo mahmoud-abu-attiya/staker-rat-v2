@@ -10,11 +10,20 @@ const SearchBox = () => {
    const [isSuggestionsOpen, setIsSuggestionsOpen] = useState(false);
    const lang = useSelector((state) => state.lang.value);
    const router = useRouter();
+
+
    useEffect(() => {
       setIsSuggestionsOpen(false);
    }, [router])
+
+
+   const closeSuggestions = () => {
+      setTimeout(() => {
+         setIsSuggestionsOpen(false);
+      }, 100)
+   }
    return (
-      <div className="flex w-full mt-3 md:mt-0 relative">
+      <div className="flex grow relative">
          <div className="relative md:block w-full">
             <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
                <svg
@@ -34,7 +43,7 @@ const SearchBox = () => {
             </div>
             <input
                onFocus={() => setIsSuggestionsOpen(true)}
-               // onBlur={() => setIsSuggestionsOpen(false)}
+               onBlur={closeSuggestions}
                type="text"
                id="search-navbar"
                className="block p-2 pl-10 w-full text-gray-900 bg-gray-50 rounded-lg border border-gray-300 sm:text-sm focus:border-primary outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
@@ -42,33 +51,40 @@ const SearchBox = () => {
             />
          </div>
          {isSuggestionsOpen && (
-            <div className="suggetions w-full bg-gray-100 dark:bg-gray-700 p-2 rounded-lg absolute space-y-2 shadow-xl border border-gray-300 dark:border-gray-600">
+            <div className="suggetions w-full bg-gray-100 dark:bg-gray-700 p-2 rounded-lg absolute flex flex-col gap-2 shadow-xl border border-gray-300 dark:border-gray-600">
                <Link href={"/user/1"} className="cursor-pointer">
-                  <div className="person py-2 sm:px-4 px-2 flex items-center gap-2 sm:gap-4 rounded-lg bg-gray-50 dark:bg-gray-800 dark:text-gray-300 shadow-sm dark:shadow-md">
+                  <div className="person py-2 sm:px-4 px-2 flex items-center gap-2 sm:gap-4 rounded-lg bg-gray-50 hover:bg-white dark:hover:bg-gray-900 dark:bg-gray-800 transition dark:text-gray-300 shadow-sm dark:shadow-md">
                      <div className="img-container w-16 h-16">
                         <Image src={avatar} alt="mahmoud abu attiya" />
                      </div>
-                     <p className="sm:text-xl">Mahmoud Abu-Attiya</p>
+                     <div className="">
+                        <h5 className="sm:text-xl">Mahmoud Abu-Attiya</h5>
+                     <p className="text-xs font-light">this is bio...</p>
+                     </div>
                   </div>
                </Link>
                <Link href={"/user/1"} className="cursor-pointer">
-                  <div className="person py-2 sm:px-4 px-2 flex items-center gap-2 sm:gap-4 rounded-lg bg-gray-50 dark:bg-gray-800 dark:text-gray-300 shadow-sm dark:shadow-md">
+                  <div className="person py-2 sm:px-4 px-2 flex items-center gap-2 sm:gap-4 rounded-lg bg-gray-50 hover:bg-white dark:hover:bg-gray-900 dark:bg-gray-800 transition dark:text-gray-300 shadow-sm dark:shadow-md">
                      <div className="img-container w-16 h-16">
                         <Image src={avatar} alt="mahmoud abu attiya" />
                      </div>
-                     <p className="sm:text-xl">Mahmoud Abu-Attiya</p>
+                     <div className="">
+                        <h5 className="sm:text-xl">Mahmoud Abu-Attiya</h5>
+                     <p className="text-xs font-light">this is bio...</p>
+                     </div>
                   </div>
                </Link>
                <Link href={"/user/1"} className="cursor-pointer">
-                  <div className="person py-2 sm:px-4 px-2 flex items-center gap-2 sm:gap-4 rounded-lg bg-gray-50 dark:bg-gray-800 dark:text-gray-300 shadow-sm dark:shadow-md">
+                  <div className="person py-2 sm:px-4 px-2 flex items-center gap-2 sm:gap-4 rounded-lg bg-gray-50 hover:bg-white dark:hover:bg-gray-900 dark:bg-gray-800 transition dark:text-gray-300 shadow-sm dark:shadow-md">
                      <div className="img-container w-16 h-16">
                         <Image src={avatar} alt="mahmoud abu attiya" />
                      </div>
-                     <p className="sm:text-xl">Mahmoud Abu-Attiya</p>
+                     <div className="">
+                        <h5 className="sm:text-xl">Mahmoud Abu-Attiya</h5>
+                     <p className="text-xs font-light">this is bio...</p>
+                     </div>
                   </div>
                </Link>
-               {/* <div className="person p-2 rounded-lg bg-gray-50 dark:bg-gray-800 text-gray-300 shadow-sm">Mahmoud</div>
-            <div className="person p-2 rounded-lg bg-gray-50 dark:bg-gray-800 text-gray-300 shadow-sm">Mahmoud</div> */}
             </div>
          )}
       </div>

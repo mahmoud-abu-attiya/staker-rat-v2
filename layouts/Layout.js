@@ -27,8 +27,8 @@ export default function Layout({ children }) {
          <Navbar />
          {openmenu && <Overlay />}
          <main>
-               <div className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 w-full h-full blur-3xl -z-10 -rotate-180">
-                  <Image src={wave} layout="fill" alt="wave Stalker rat" />
+               <div className="absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 overflow-hidden w-full h-full blur-3xl -z-10 -rotate-180 flex items-center justify-center">
+                  <Image src={wave} priority alt="wave Stalker rat" className="min-w-[700px]" />
                </div>
                {children}
          </main>
